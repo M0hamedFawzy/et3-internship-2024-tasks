@@ -1,0 +1,101 @@
+version: '3.7'
+
+services:
+    app-kalimatcash-internship2024:
+        build: .
+        command: bash runserver.sh
+        volumes:
+            - ./:/usr/src/app/
+        environment:
+            - DEBUG=True
+            - SECRET_KEY=foo
+            - SQL_ENGINE=django.db.backends.postgresql
+            - SQL_DB=postgres
+            - SQL_USER=internship2024
+            - SQL_PASSWORD=internship2024123
+            - SQL_HOST=postgres-internship2024-kalimatcash
+            - SQL_PORT=5432
+        depends_on:
+            - postgres-internship2024-kalimatcash
+
+    worker-kalimatcash-internship2024:
+        build: .
+        command: bash runworker.sh
+        volumes:
+            - ./:/usr/src/app/
+        environment:
+            - DEBUG=True
+            - SECRET_KEY=foo
+            - SQL_ENGINE=django.db.backends.postgresql
+            - SQL_DB=postgres
+            - SQL_USER=internship2024
+            - SQL_PASSWORD=internship2024123
+            - SQL_HOST=postgres-internship2024-kalimatcash
+            - SQL_PORT=5432
+            - CELERY_BROKER_URL=amqp://internship2024:internship2024123@rabbit-internship2024-kalimatcash:5672//
+        depends_on:
+            - postgres-internship2024-kalimatcash
+            - rabbit-internship2024-kalimatcash
+
+    beat-kalimatcash-internship2024:
+        build: .
+        command: bash runbeat.sh
+        volumes:
+            - ./:/usr/src/app/
+        environment:
+            - DEBUG=True
+            - SECRET_KEY=foo
+            - SQL_ENGINE=django.db.backends.postgresql
+            - SQL_DB=postgres
+            - SQL_USER=internship2024
+            - SQL_PASSWORD=internship2024123
+            - SQL_HOST=postgres-internship2024-kalimatcash
+            - SQL_PORT=5432
+            - CELERY_BROKER_URL=amqp://internship2024:internship2024123@rabbit-internship2024-kalimatcash:5672//
+        depends_on:
+            - postgres-internship2024-kalimatcash
+            - rabbit-internship2024-kalimatcash
+     
+    postgres-internship2024-kalimatcash:
+        image: postgres
+        volumes:
+            - postgres_data:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=internship2024
+            - POSTGRES_PASSWORD=internship2024123
+            - POSTGRES_DB=postgres
+
+    rabbit-internship2024-kalimatcash:
+        image: rabbitmq:management
+        volumes:
+            - rabbit_data:/var/lib/rabbitmq/mnesia
+        environment:
+            - RABBITMQ_DEFAULT_USER=internship2024
+            - RABBITMQ_DEFAULT_PASS=internship2024123
+        ports:
+            - 15672:15672
+
+    nginx-internship2024-kalimatcash:
+        image: nginx
+        volumes:
+            - ./nginx_conf:/etc/nginx/conf.d
+            - ./media:/usr/src/app/media
+            - ./static:/usr/src/app/static
+        ports:
+            - 80:80
+        depends_on:
+            - app-kalimatcash-internship2024
+            
+    front-internship2024-kalimatcash:
+        build: ../frontend
+
+        ports:
+            - 8080:80
+        depends_on:
+            - app-kalimatcash-internship2024
+            
+
+volumes:
+  postgres_data:
+  rabbit_data:
+

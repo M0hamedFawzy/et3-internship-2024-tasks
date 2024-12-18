@@ -1,0 +1,311 @@
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+header {
+    background-color: rgba(38, 38, 38, 1);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+footer{
+            background-color: rgba(38, 38, 38, 1);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+footer img {
+            display: block;
+            margin: 20px auto;
+            width: 50px;
+        }
+
+
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Center buttons horizontally */
+    gap: 20px; /* Space between buttons */
+    margin-top: 80px; /* Space above the buttons */
+    clear: both; /* Ensure buttons are below previous content */
+}
+
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(38, 38, 38, 1);
+    color: #fff;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.2; /* Center text vertically */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for better appearance */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth hover effect */
+}
+
+
+.button:hover {
+    background-color: rgba(255, 255, 255, 1); /* Darker theme color on hover */
+    color: rgba(38, 38, 38, 1);
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
+#logout-link {
+    color: rgba(120, 15, 50, 1);
+}
+
+
+.home-container {
+    padding-left: 30px;
+    padding-top: 20px;
+    position: left;
+    top: 20px;
+    left: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(38, 38, 38, 1);
+    color: #fff;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.home-button:hover {
+    background-color: #555;
+    transform: scale(1.1);
+}
+
+.home-icon {
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+}
+
+.home-container p {
+    padding-left: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #000;
+}
+
+
+
+
+.cta-container {
+    padding-left: 30px;
+    padding-top: 20px;
+    padding-bottom:50px;
+    position: right;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; // Add a gap between elements
+}
+
+cta {
+    text-align: center;
+    margin: 40px;
+
+}
+.cta button {
+    padding: 15px 30px;
+    background-color: rgba(38, 38, 38, 1);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+.transaction-history {
+    margin-top: 50px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 40px;
+}
+
+.history-header {
+    background-color: rgba(38, 38, 38, 1);
+    padding: 10px;
+    width: 80%;
+    color: white;
+}
+
+.history-table {
+    width: 80%;
+    background-color: #f2f2f2;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.history-table th, .history-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.history-table th {
+    background-color: #333;
+    color: white;
+}
+
+.history-table td {
+    background-color: #fff;
+}
+
+.history-table tr:hover {
+    background-color: #ddd;
+}
+
+/* Service type icons */
+.fas {
+    margin-right: 5px;
+}
+
+/* Adjust table responsiveness */
+@media (max-width: 768px) {
+    .history-table {
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.form-container {
+    width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow around the form */
+    text-align: center;
+}
+
+.form-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-container input[type="tel"] {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Input field shadow */
+    font-size: 16px;
+}
+
+
+.form-container input[type="number"] {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Input field shadow */
+    font-size: 16px;
+}
+
+
+.form-container button {
+    background-color: rgba(38, 38, 38, 1);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Button shadow */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.form-container button:hover {
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(38, 38, 38, 1);
+    transform: scale(1.05);
+}
+
+
+
+.dropdown-container {
+        padding-top:10px;
+        margin-bottom: 20px;
+    }
+
+    select {
+        width: 90%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        margin-bottom: 20px;
+        appearance: none;
+        background: url('{% static "images/dropdown-icon.png" %}') no-repeat right 10px center;
+        background-size: 15px;
+        cursor: pointer;
+    }
+
+    select option {
+        font-size: 16px;
+        padding: 10px;
+        background-color: #fff;
+    }

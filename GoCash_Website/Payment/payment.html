@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoCash | User Pyement Portal</title>
+    <link rel="stylesheet" href="/Payment/payment.css">
+</head>
+<body>
+    <header>
+        <h1>GoCash | Payment Portal</h1> <!-- Placeholder for the user's name -->
+        <nav>
+            <a href="/Wallet/wallet.html">Wallet</a>
+            <a href="/Transactions/transactions.html">Transfers</a>
+            <a href="/Payment/payment.html">Payment</a>
+            <a href="/subscription.html">Subscription Plan</a>
+            <a href="/green.html">Green User</a>
+            <a href="/Support/support.html">Support</a>
+            <a href="#" id="logout-link">Log out</a> <!-- Logout option -->
+        </nav>
+    </header>
+
+    
+
+    <div class="container">
+        <div id="message-container"></div>
+
+        <!-- Bills Payment -->
+        <div class="category">
+            <h2>Bills Payment</h2>  
+        </div>
+        <div class="methods">
+            <div class="method" data-service-type="Bills Payment" data-service-name="Electricity">
+                <img src="/images/Electricity.jpg" alt="Electricity">
+                <p>Electricity</p>
+            </div>
+            <div class="method" data-service-type="Bills Payment" data-service-name="Water">
+                <img src="/images/water.png" alt="Water">
+                <p>Water</p>
+            </div>
+            <div class="method" data-service-type="Bills Payment" data-service-name="Gas">
+                <img src="/images/gas.png" alt="Gas">
+                <p>Gas</p>
+            </div>
+            <div class="method" data-service-type="Bills Payment" data-service-name="We Internet">
+                <img src="/images/we.jpg" alt="We Internet">
+                <p>We Internet</p>
+            </div>
+        </div>
+        <div class="space"></div>
+
+        <!-- Mobile Bills -->
+        <div class="category">
+            <h2>Mobile Bills</h2>
+        </div>
+        <div class="methods">
+            <div class="method" data-service-type="Mobile Bills" data-service-name="Vodafone">
+                <img src="/images/vodafone.png" alt="Vodafone">
+                <p>Vodafone</p>
+            </div>
+            <div class="method" data-service-type="Mobile Bills" data-service-name="Etisalat">
+                <img src="/images/etisalat.png" alt="Etisalat">
+                <p>Etisalat</p>
+            </div>
+            <div class="method" data-service-type="Mobile Bills" data-service-name="Orange">
+                <img src="/images/orange.png" alt="Orange">
+                <p>Orange</p>
+            </div>
+            <div class="method" data-service-type="Mobile Bills" data-service-name="Recharge Balance">
+                <img src="/images/recharge.png" alt="Recharge Balance">
+                <p>Recharge Balance</p>
+            </div>
+        </div>
+        <div class="space"></div>
+
+
+        <!-- Merchant Payment -->
+        <div class="category">
+            <h2>Merchant Payment</h2>
+        </div>
+        <div class="methods">
+            <div class="method" data-service-type="Merchant Payment" data-service-name="Amazon">
+                <img src="/images/amazon.png" alt="Amazon">
+                <p>Amazon</p>
+            </div>
+            <div class="method" data-service-type="Merchant Payment" data-service-name="PayPal">
+                <img src="/images/paypal.png" alt="PayPal">
+                <p>PayPal</p>
+            </div>
+            <div class="method" data-service-type="Merchant Payment" data-service-name="Dubizzle">
+                <img src="/images/dubizzle.png" alt="Dubizzle">
+                <p>Dubizzle</p>
+            </div>
+            <div class="method" data-service-type="Merchant Payment" data-service-name="Apple Store">
+                <img src="/images/apple.jpg" alt="Apple TV+">
+                <p>Apple Store</p>
+            </div>
+            <div class="method" data-service-type="Merchant Payment" data-service-name="Netflix">
+                <img src="/images/netflix.png" alt="Netflix">
+                <p>Netflix</p>
+            </div>
+            <div class="method" data-service-type="Merchant Payment" data-service-name="AliExpress">
+                <img src="/images/ali.png" alt="AliExpress">
+                <p>AliExpress</p>
+            </div>
+        </div>
+    </div>
+    <div class="space"></div>
+
+
+    <!-- Modal -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="service-name"></h3>
+            <img id="service-image" src="" alt="">
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" placeholder="Enter amount">
+            <span id="discount-label" class="green-label"></span>
+            <div>
+                <input type="checkbox" id="confirm-checkbox">
+                <label for="confirm-checkbox">I confirm this payment</label>
+            </div>
+            <button id="confirm-button" disabled>Confirm</button>
+        </div>
+    </div>
+
+    <div class="space"></div>
+
+    <footer>
+        <p>Designed by Mohamed Fawzy</p>
+        <p>GoCash Application eT3 - Project</p>
+        <img src="/images/et3-logo.jpeg" alt="eT3 Logo">
+    </footer>
+
+    <script src="/Payment/payment.js"></script>
+</body>
+</html>

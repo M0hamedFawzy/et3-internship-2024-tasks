@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/accountAccess.css" type="text/css">
+    <script src="js/signin.js" defer></script> <!-- Link the JS file with defer -->
+    <title>GoCash - Sign In</title>
+</head>
+<body>
+    <header>
+        <h1>GoCash</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="register.html">Register</a>
+            <a href="signin.html">Sign In</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="form-box">
+            <div id="message-box"></div> <!-- Placeholder for error/success messages -->
+            <form id="signin-form">
+                <!-- CSRF Token is not needed for separate front-end; handle via headers -->
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                <button type="submit">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>Designed by Mohamed Fawzy</p>
+        <p>GoCash Application eT3 - Project</p>
+        <img src="images/et3-logo.jpeg" alt="eT3 Logo">
+    </footer>
+</body>
+</html>

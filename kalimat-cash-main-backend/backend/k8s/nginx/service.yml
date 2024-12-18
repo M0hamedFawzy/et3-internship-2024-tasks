@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: internship2024
+  name: kalimatcash-nginx-internship2024
+  labels:
+    service: kalimatcash-nginx-internship2024
+spec:
+  selector:
+    service: kalimatcash-nginx-internship2024
+  type: ClusterIP
+  ports:
+  - name: web
+    port: 80
+

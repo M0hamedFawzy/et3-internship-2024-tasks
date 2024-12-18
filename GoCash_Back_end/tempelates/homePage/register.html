@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/accountAccess.css' %}" type="text/css">
+    <script src="{% static '/js/register.js' %}"></script> <!-- Link the new JS file -->
+    <title>GoCash - Registration</title>
+</head>
+<body>
+    <header>
+        <h1>GoCash</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/register">Register</a>
+            <a href="/sign_up">Sign In</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="form-box">
+            <div id="message-box"></div> <!-- Placeholder for error/success messages -->
+            <form id="registration-form">
+                {% csrf_token %}
+                <label for="username">User Name</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>Designed by Mohamed Fawzy</p>
+        <p>GoCash Application eT3 - Project</p>
+        <img src="{% static 'images/images.jpeg' %}" alt="eT3 Logo">
+    </footer>
+</body>
+</html>

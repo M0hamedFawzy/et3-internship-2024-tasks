@@ -1,0 +1,213 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+header {
+    background-color: rgba(38, 38, 38, 1);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+footer {
+    background-color: rgba(38, 38, 38, 1);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+footer img {
+    display: block;
+    margin: 20px auto;
+    width: 50px;
+}
+
+/* Home Button */
+.home-container {
+    padding-left: 30px;
+    padding-top: 20px;
+    position: absolute;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(38, 38, 38, 1);
+    color: #fff;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.home-button:hover {
+    background-color: #555;
+    transform: scale(1.1);
+}
+
+.home-icon {
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+}
+
+.home-container p {
+    padding-left: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #000;
+}
+
+/* Form Container */
+.form-container {
+    width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.form-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-container input[type="tel"],
+.form-container input[type="number"] {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+}
+
+.form-container button {
+    background-color: rgba(38, 38, 38, 1);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.form-container button:hover {
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(38, 38, 38, 1);
+    transform: scale(1.05);
+}
+
+/* Message Styles */
+#message-container {
+    width: 400px;
+    margin: 20px auto;
+}
+
+.message {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    border: 1px solid #4F8A10;
+}
+
+.error {
+    color: #D8000C;
+    background-color: #FFBABA;
+    border: 1px solid #D8000C;
+}
+
+/* Logout Link */
+#logout-link {
+    color: rgb(255, 255, 255);
+}
+
+/* Responsive Table (if needed in future) */
+.transaction-history {
+    margin-top: 50px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 40px;
+}
+
+.history-header {
+    background-color: rgba(38, 38, 38, 1);
+    padding: 10px;
+    width: 80%;
+    color: white;
+}
+
+.history-table {
+    width: 80%;
+    background-color: #f2f2f2;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.history-table th, .history-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.history-table th {
+    background-color: #333;
+    color: white;
+}
+
+.history-table td {
+    background-color: #fff;
+}
+
+.history-table tr:hover {
+    background-color: #ddd;
+}
+
+/* Service type icons */
+.fas {
+    margin-right: 5px;
+}
+
+/* Adjust table responsiveness */
+@media (max-width: 768px) {
+    .history-table {
+        width: 100%;
+    }
+}

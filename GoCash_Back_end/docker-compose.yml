@@ -1,0 +1,51 @@
+version: '3.9'
+
+services:
+  app-gocash:
+    build: .
+    command: bash runserver.sh
+    volumes:
+      - ./:/usr/src/app/
+    environment:
+      - DEBUG=True
+      - SECRET_KEY=django-insecure-h8idlu94j@*fkxpz=19^8=be1=ofmzobco4zcy0vv-)ho7@t%j
+      - SQL_ENGINE=django.db.backends.postgresql
+      - SQL_DB=GoCashDB
+      - SQL_USER=postgres
+      - SQL_PASSWORD=1234
+      - SQL_HOST=postgres-gocash
+      - SQL_PORT=5432
+    depends_on:
+      - postgres-gocash
+
+  postgres-gocash:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=GoCashDB
+    ports:
+      - "5432:5432"
+
+  nginx-gocash:
+    image: nginx
+    volumes:
+      - ./nginx_conf:/etc/nginx/conf.d
+      - ./media:/usr/src/app/media
+      - ./static:/usr/src/app/static
+    ports:
+      - "80:80"
+    depends_on:
+      - app-gocash
+
+  # frontend-gocash:
+  #   build: ../GoCash_Website
+  #   ports:
+  #     - "8080:80"
+  #   depends_on:
+  #     - app-gocash
+
+volumes:
+  postgres_data:

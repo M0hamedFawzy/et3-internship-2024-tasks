@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Transactions/css/transactions.css" type="text/css">
+    <script src="https://kit.fontawesome.com/f5a624e72c.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <title>GoCash | User Dashboard</title>
+</head>
+<body>
+    <header>
+        <h1 id="user-name">GoCash | Transactions</h1> <!-- Will be populated by JS -->
+        <nav>
+            <a href="/Wallet/wallet.html">Wallet</a>
+            <a href="/Transactions/transactions.html">Transfers</a>
+            <a href="#">Payment</a>
+            <a href="#">Subscription Plan</a>
+            <a href="#">Green User</a>
+            <a href="/Support/support.html">Support</a>
+            <a href="#" id="logout-link">Log out</a>
+        </nav>
+    </header>
+
+    <div class="home-container">
+        <a href="/Dashboard/dashboard.html" class="home-button">
+            <img src="/images/user_home2.png" alt="Home" class="home-icon">
+        </a>
+        <p><strong>Home</strong></p>
+    </div>
+
+    <div class="cta-container" id="action-buttons">
+        <!-- Buttons will be inserted here by JS if user is logged in -->
+    </div>
+
+    <div class="transaction-history" id="transaction-history">
+        <!-- Transaction history or wallet creation prompt will be rendered here -->
+    </div>
+
+    <!-- Pagination Controls -->
+    <div class="pagination" id="pagination-controls">
+        <button id="prev-btn" class="pagination-btn" disabled>
+            <i class="fas fa-arrow-left"></i> Previous
+        </button>
+        <span id="page-info">Page 1</span>
+        <button id="next-btn" class="pagination-btn" disabled>
+            Next <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+
+    <footer>
+        <p>Designed by Mohamed Fawzy</p>
+        <p>GoCash Application eT3 - Project</p>
+        <img src="/images/et3-logo.jpeg" alt="eT3 Logo">
+    </footer>
+    
+    <!-- SheetJS Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <!-- jsPDF Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- jsPDF AutoTable Plugin (if you choose to use it) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <script src="/Transactions/js/transactions.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: internship2024
+  creationTimestamp: null
+  labels:
+    name: kalimatcash
+  name: kalimatcash-internship2024
+spec:
+  progressDeadlineSeconds: 2147483647
+  replicas: 1
+  selector:
+    matchLabels:
+      service: kalimatcash-internship2024
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        service: kalimatcash-internship2024
+    spec:
+      containers:
+      - name: kalimatcash-internship2024
+        image: docker.et3.co/internship2024.kalimatcash:latest
+        command: ["sh"]
+        args: ["runserver.sh"]
+        env:
+          - name: DEBUG
+            value: "False"        
+          - name: SQL_USER
+            value: internship2024
+          - name: SQL_ENGINE
+            value: django.db.backends.postgresql_psycopg2
+          - name: SQL_PASSWORD
+            value: internship2024123
+          - name: SQL_HOST
+            value: postgres-internship2024-kalimatcash
+          - name: SQL_PORT
+            value: "5432"
+          - name: SQL_DB
+            value: postgres
+          - name: MEDIA_ROOT
+            value: /usr/src/media
+          - name: DOMAIN
+            value: "https://kalimatcash.internship2024.et3.co/"
+          
+        volumeMounts:
+        - mountPath: /usr/src/app/data
+          name: kalimatcash-internship2024-volume-mount
+        - mountPath: /usr/src/media
+          name: kalimatcash-nginx-internship2024-volume-mount
+        - mountPath: /usr/src/app/static
+          name: kalimatcash-static-internship2024-volume-mount
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: kalimatcash-internship2024-volume-mount
+        persistentVolumeClaim:
+          claimName: kalimatcash-internship2024-pvc
+      - name: kalimatcash-nginx-internship2024-volume-mount
+        persistentVolumeClaim:
+          claimName: kalimatcash-nginx-internship2024-pvc
+      - name: kalimatcash-static-internship2024-volume-mount
+        persistentVolumeClaim:
+          claimName: kalimatcash-static-internship2024-pvc
+

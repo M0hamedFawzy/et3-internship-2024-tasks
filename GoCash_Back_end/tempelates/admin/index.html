@@ -1,0 +1,19 @@
+{% extends "admin/index.html" %}
+
+{% block content %}
+    {{ block.super }} <!-- Keeps the existing admin site content -->
+    <div style="margin-top: 20px;">
+        <a href="/dwbi_dashboard/" class="button" style="
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #2f2f2f;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        ">
+            Dashboard
+        </a>
+    </div>
+{% endblock %}

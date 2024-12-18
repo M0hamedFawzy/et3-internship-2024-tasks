@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoCash | Charge Wallet</title>
+    <link rel="stylesheet" href="/Wallet/css/charge_wallet.css">
+</head>
+<body>
+    <header>
+        <h1>GoCash | Charge Wallet</h1>
+        <nav>
+            <a href="/Wallet/charge_wallet.html">Wallet</a>
+            <a href="/Transactions/transactions.html">Transfers</a>
+            <a href="payment.html">Payment</a>
+            <a href="subscription.html">Subscription Plan</a>
+            <a href="greenuser.html">Green User</a>
+            <a href="/Support/support.html">Support</a>
+            <a href="logout.html">Log out</a>
+        </nav>
+    </header>
+
+    <!-- Home (Back) button and label -->
+    <div class="home-container">
+        <a href="/Wallet/wallet.html" class="home-button">
+            <img src="/images/back.png" alt="Back" class="home-icon">
+        </a>
+        <p><strong>Back</strong></p>
+    </div>
+
+    <!-- Charge Wallet Form -->
+    <div class="form-container">
+        <h2>Charge Your Wallet</h2>
+        <div id="message-container"></div>
+        <form id="charge-wallet-form">
+            <div class="form-group">
+                <label for="amount">Amount (EGP):</label>
+                <input type="number" id="amount" name="amount" min="1" step="0.01" placeholder="Enter amount" required>
+            </div>
+            <div class="form-group">
+                <label for="payment_method">Payment Method:</label>
+                <select id="payment_method" name="payment_method" required>
+                    <option value="" disabled selected>Select payment method</option>
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="Debit Card">Debit Card</option>
+                    <option value="Bank Transfer">Bank Transfer</option>
+                    <option value="PayPal">PayPal</option>
+                    <!-- Add other payment methods as needed -->
+                </select>
+            </div>
+            <button type="submit">Charge Wallet</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>Designed by Mohamed Fawzy</p>
+        <p>GoCash Application eT3 - Project</p>
+        <img src="/images/et3-logo.jpeg" alt="eT3 Logo">
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/Wallet/js/charge_wallet.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>Admin Dashboard</h1>
+        </header>
+        <section class="main-cards">
+            <div class="card">
+                <h3>Active Users</h3>
+                <h1 id="active-users-count">0</h1>
+            </div>
+            <div class="card">
+                <h3>Green Users</h3>
+                <h1 id="leaf-users-count">0 Leaf</h1>
+                <h1 id="tree-users-count">0 Tree</h1>
+                <h1 id="forest-users-count">0 Forest</h1>
+            </div>
+            <div class="card">
+                <h3>Active Wallets</h3>
+                <h1 id="active-wallets-count">0</h1>
+            </div>
+            <div class="card">
+                <h3>Total Transactions</h3>
+                <h1 id="total-transactions-count">0</h1>
+            </div>
+        </section>
+
+        <section class="chart-section">
+            <h2>Users Section</h2>
+            <div class="chart-grid">
+                <canvas id="active-vs-inactive-users"></canvas>
+                <canvas id="user-subscription-plans"></canvas>
+                <canvas id="green-users"></canvas>
+            </div>
+        </section>
+
+        <section class="chart-section">
+            <h2>Wallet Section</h2>
+            <div class="chart-grid">
+                <canvas id="wallet-avg-balance"></canvas>
+                <canvas id="active-vs-inactive-wallets"></canvas>
+            </div>
+        </section>
+
+        <section class="chart-section">
+            <h2>Transactions Section</h2>
+            <div class="chart-grid">
+                <canvas id="transactions-per-year"></canvas>
+                <canvas id="monthly-transactions"></canvas>
+                <canvas id="service-type-distribution"></canvas>
+                <canvas id="transaction-peaks"></canvas>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

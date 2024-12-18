@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoCash | Chatbot</title>
+  <!-- Linking Google Fonts For Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="/Support/support.css">
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@google/generative-ai"></script> -->
+
+</head>
+<body>
+    <header>
+        <h1>GoCash | Chatbot</h1>
+        <nav>
+            <a href="/Wallet/wallet.html">Wallet</a>
+            <a href="/Transactions/transactions.html">Transfers</a>
+            <a href="payment.html">Payment</a>
+            <a href="subscription.html">Subscription Plan</a>
+            <a href="greenuser.html">Green User</a>
+            <a href="/Support/support.html">Support</a>
+            <a href="#" id="logout-link">Log out</a> <!-- Logout option -->
+        </nav>
+    
+    </header>
+  
+
+    <!-- Home button and label -->
+    <div class="home-container">
+        <a href="/Dashboard/dashboard.html" class="home-button">
+            <img src="/images/user_home2.png" alt="Home" class="home-icon">
+        </a>
+        <p><strong>Home</strong></p>
+    </div>
+
+    <h1 class="title">GO says Hi</h1>
+    <p class="subtitle">How can I help you today?</p>
+
+  <!-- Chat List / Container -->
+  <div class="chat-list"></div>
+
+  <!-- Typing Area -->
+  <div class="typing-area">
+    <form action="#" class="typing-form">
+      <div class="input-wrapper">
+        <input type="text" placeholder="Ask GO any question you want" class="typing-input" required />
+        <button id="send-message-button" class="icon material-symbols-rounded">send</button>
+      </div>
+      <div class="action-buttons">
+        <span id="theme-toggle-button" class="icon material-symbols-rounded">light_mode</span>
+        <span id="delete-chat-button" class="icon material-symbols-rounded">delete</span>
+      </div>
+    </form>
+    <p class="disclaimer-text">
+      Go Chatbot Developed for GoCash Website.
+    </p>
+  </div>
+
+
+  <!-- <script src="/Support/support.js"></script> -->
+  <script type="module" src="/Support/support.js"></script>
+</body>
+</html>

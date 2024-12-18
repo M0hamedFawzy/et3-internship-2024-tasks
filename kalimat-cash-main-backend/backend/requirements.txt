@@ -1,0 +1,9 @@
+gunicorn
+djangorestframework
+celery
+django-jazzmin
+django-celery-results
+django-celery-beat
+psycopg2-binary
+django-import-export
+

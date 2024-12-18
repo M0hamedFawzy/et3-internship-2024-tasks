@@ -1,0 +1,18 @@
+FROM ubuntu:focal
+
+WORKDIR /usr/src/app
+
+RUN apt-get update -y  &&  apt-get upgrade -y 
+RUN apt-get install -y curl python3 git python3-pip netcat
+
+COPY ./requirements.txt ./requirements.txt
+
+RUN pip install -r requirements.txt --no-cache-dir
+
+RUN mkdir /usr/src/app/media
+
+COPY . .
+
+
+
+

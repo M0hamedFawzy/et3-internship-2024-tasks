@@ -1,0 +1,125 @@
+Table SubscriptionPlan {
+    id int [pk, increment]
+    name varchar(10) [unique, not null]
+    price decimal(6, 2) [not null]
+    max_balance decimal(20, 2)
+    max_transactions decimal(6, 2)
+}
+
+Table GreenUser {
+    id int [pk, increment]
+    green_type varchar(6) [unique, not null]
+    price decimal(6, 2) [not null]
+}
+
+Table Users {
+    user_id int [pk, increment]
+    phone_number varchar(15) [unique, not null]
+    username varchar(50)
+    registration_date timestamp [default: `CURRENT_TIMESTAMP`]
+    subscription_plan_id int
+    green_user_status_id int
+    is_active boolean [default: true]
+    is_staff boolean [default: false]
+}
+
+Table Wallet {
+    wallet_id int [pk, increment]
+    wallet_pass char(6) [not null]
+    user_id int [not null]
+    balance decimal(10, 2) [default: 0.00]
+    is_active boolean [default: true]
+    deleted boolean [default: false]
+}
+
+Table Transaction {
+    transaction_id int [pk, increment]
+    sender_id int [not null]
+    receiver varchar(15) [not null]
+    user_wallet_id int [not null]
+    amount decimal(10, 2) [not null]
+    fees decimal(10, 2)
+    service_type varchar(50)
+    service_name varchar(50)
+    balance_before decimal(10, 2) [default: 0.00]
+    balance_after decimal(10, 2) [default: 0.00]
+    transaction_date timestamp [default: `CURRENT_TIMESTAMP`]
+}
+
+Ref: Users.subscription_plan_id > SubscriptionPlan.id
+Ref: Users.green_user_status_id > GreenUser.id
+Ref: Wallet.user_id > Users.user_id
+Ref: Transaction.sender_id > Users.user_id
+Ref: Transaction.user_wallet_id > Wallet.wallet_id
+
+
+-------------------------------------------------------------------------------------
+
+
+Table DimDate {
+    date_id int [pk, increment]
+    date date [not null]
+    day int
+    month int
+    year int
+    quarter int
+    weekday varchar(10)
+}
+
+Table DimUser {
+    user_id int [pk]
+    phone_number varchar(15)
+    username varchar(50)
+    registration_date date
+    subscription_plan_id int
+    green_user_status_id int
+    is_active boolean
+    is_staff boolean
+}
+
+Table DimSubscriptionPlan {
+    subscription_plan_id int [pk]
+    name varchar(10)
+    price decimal(6, 2)
+    max_balance decimal(20, 2)
+    max_transactions decimal(6, 2)
+}
+
+Table DimGreenPlan {
+    green_plan_status_id int [pk]
+    green_type varchar(6)
+    price decimal(6, 2)
+}
+
+Table DimServiceType {
+    service_type_id int [pk, increment]
+    service_type varchar(50)
+    service_name varchar(50)
+}
+
+Table DimWallet {
+    wallet_id int [pk]
+    user_id int
+    balance decimal(10, 2)
+    is_active boolean
+    deleted boolean
+}
+
+Table FactTransaction {
+    transaction_id int [pk, increment]
+    date_id int
+    user_id int
+    wallet_id int
+    service_type_id int
+    amount decimal(10, 2)
+    fees decimal(10, 2)
+    balance_before decimal(10, 2)
+    balance_after decimal(10, 2)
+    transaction_date timestamp
+}
+
+Ref: FactTransaction.date_id > DimDate.date_id
+Ref: FactTransaction.user_id > DimUser.user_id
+Ref: FactTransaction.wallet_id > DimWallet.wallet_id
+Ref: FactTransaction.service_type_id > DimServiceType.service_type_id
+

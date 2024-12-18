@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoCash | Wallet</title>
+    <link rel="stylesheet" href="/Wallet/css/wallet.css">
+</head>
+<body>
+    <header>
+        <h1>GoCash | Wallet</h1>
+        <nav>
+            <a href="/Wallet/wallet.html">Wallet</a>
+            <a href="/Transactions/transactions.html">Transfers</a>
+            <a href="payment.html">Payment</a>
+            <a href="subscription.html">Subscription Plan</a>
+            <a href="greenuser.html">Green User</a>
+            <a href="/Support/support.html">Support</a>
+            <a href="logout.html">Log out</a>
+        </nav>
+    </header>
+
+    <!-- Home button and label -->
+    <div class="home-container">
+        <a href="/Dashboard/dashboard.html" class="home-button">
+            <img src="/images/user_home2.png" alt="Home" class="home-icon">
+        </a>
+        <p><strong>Home</strong></p>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div id="wallet-content" class="container">
+            <!-- Dynamic content will be injected here -->
+        </div>
+    </main>
+
+ <!-- Create Wallet Modal -->
+<div id="create-wallet-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="close-create-wallet">&times;</span>
+        <h2>Create Wallet</h2>
+        <div class="message-container"></div> <!-- Changed to class -->
+        <form id="create-wallet-form">
+            <div class="terms">
+                <input type="checkbox" id="terms-checkbox" required>
+                <label for="terms-checkbox">I have read and accept the terms of creation.</label>
+            </div>
+            <div class="form-group">
+                <label for="wallet-password">Set Wallet Password:</label>
+                <input type="password" id="wallet-password" name="password" minlength="4" maxlength="6" required>
+            </div>
+            <div class="form-group">
+                <label for="wallet-repass">Confirm Password:</label>
+                <input type="password" id="wallet-repass" name="repass" minlength="4" maxlength="6" required>
+            </div>
+            <button type="submit">Create Wallet</button>
+        </form>
+    </div>
+</div>
+
+<!-- Reset Password Modal -->
+<div id="reset-password-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="close-reset-password">&times;</span>
+        <h2>Reset Wallet Password</h2>
+        <div class="message-container"></div> <!-- Changed to class -->
+        <form id="reset-password-form">
+            <div class="form-group">
+                <label for="old-password">Enter Old Password:</label>
+                <input type="password" id="old-password" name="old_password" maxlength="6" required>
+            </div>
+            <div class="form-group">
+                <label for="new-password">Enter New Password:</label>
+                <input type="password" id="new-password" name="new_password" maxlength="6" required>
+            </div>
+            <button type="submit">Reset Password</button>
+        </form>
+    </div>
+</div>
+
+<!-- Activation/Deactivation Modal -->
+<div id="activation-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="close-activation-modal">&times;</span>
+        <h2 id="activation-modal-title">Activate Wallet</h2>
+        <div class="message-container"></div> <!-- Changed to class -->
+        <form id="activation-form">
+            <div class="form-group">
+                <label for="activation-password">Enter Password:</label>
+                <input type="password" id="activation-password" name="password" maxlength="6" required>
+            </div>
+            <button type="submit" id="activation-submit-button">Activate</button>
+        </form>
+    </div>
+</div>
+
+<!-- Delete Wallet Modal -->
+<div id="delete-wallet-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="close-delete-wallet">&times;</span>
+        <h2>Delete Wallet</h2>
+        <p>After deleting the wallet, you will not be able to use the application. The balance in the wallet will be gone. Please withdraw or transfer the money before proceeding. The wallet must have at least 50 EGP for deletion.</p>
+        <div class="message-container"></div> <!-- Changed to class -->
+        <form id="delete-wallet-form">
+            <div class="form-group">
+                <label for="delete-password">Enter Password:</label>
+                <input type="password" id="delete-password" name="password" maxlength="6" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-delete">Type "I Confirm" to proceed:</label>
+                <input type="text" id="confirm-delete" name="confirm_txt" required>
+            </div>
+            <button type="submit">Delete Wallet</button>
+        </form>
+    </div>
+</div>
+
+<!-- Restore Wallet Modal -->
+<div id="restore-wallet-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="close-restore-wallet">&times;</span>
+        <h2>Restore Wallet</h2>
+        <p>Your wallet is deleted and will be permanently deleted after 3 days.</p>
+        <div class="message-container"></div> <!-- Changed to class -->
+        <form id="restore-wallet-form">
+            <div class="form-group">
+                <label for="restore-password">Enter Password:</label>
+                <input type="password" id="restore-password" name="password" maxlength="6" required>
+            </div>
+            <button type="submit">Restore Wallet</button>
+        </form>
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>Designed by Mohamed Fawzy</p>
+        <p>GoCash Application eT3 - Project</p>
+        <img src="/images/et3-logo.jpeg" alt="eT3 Logo">
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/Wallet/js/wallet.js"></script>
+</body>
+</html>

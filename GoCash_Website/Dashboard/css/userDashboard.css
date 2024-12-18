@@ -1,0 +1,404 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+header {
+    background-color: #262626;
+    color: white;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 10px;
+    font-size: 30px;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.dashboard-container {
+    display: flex;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Green Plan Section */
+.green-plan {
+    /* position: absolute; */
+    display: none;
+    width: 20%;
+    height: 18%;
+    background-color: #9CD9AF;
+    border: 2px solid #ffffff;
+    /* border-radius: 8px; */
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.green-plan h2 {
+    background-color: #249667;
+    color: white;
+    padding: 10px 0;
+    margin: -20px -20px 20px -20px;
+    /* border-radius: 8px 8px 0 0; */
+}
+
+.green-plan img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+#become-green-button {
+    padding: 10px 20px;
+    background-color: #ffffff00;
+    color: #ffffff;
+    border: 2px solid #ffffff;;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#become-green-button:hover {
+    background-color: #ffffff;
+    color: #249667;
+}
+
+/* Main Content */
+main {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* GoCash Card */
+.gocash-card {
+    position: relative;
+    width: 300px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    padding-left: 157px;
+}
+
+.gocash-card img {
+    width: 150%;
+    border-radius: 26px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.gocash-card img:hover {
+    transform: scale(1.05);
+}
+
+.card-info {
+    position: absolute;
+    top: 60px;
+    left: 191px;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+
+.card-info p {
+    margin: 15px 0;
+    font-size: 19px;
+}
+
+
+.subscription-info {
+    position: absolute;
+    top: 60px;
+    left: 440px;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+.upgrade-plan{
+    position: absolute;
+    top: 177px;
+    left: 423px;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+.upgrade-plan button{
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: #262626;
+    /* border: 2px solid #262626; */
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.upgrade-plan button:hover{
+    background-color: #262626;
+    color: #ffffff;
+}
+
+
+.subscription-info p {
+    margin: 15px 0;
+    font-size: 19px;
+}
+
+/* Action Buttons */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+    margin-left: 308px;
+    margin-top: 70px;
+    margin-bottom: 39px;
+}
+
+.button-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.action-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 110px;
+    height: 110px;
+    border-radius: 100px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); */
+    border: none;
+}
+
+.action-button img {
+    width: 40px;
+    height: 40px;
+}
+
+/* Button Text */
+.button-text {
+    margin-top: 30px;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* First Button (Same Style) */
+.first-button {
+    background-color: #262626;
+    color: #fff;
+    border: 2px solid #ffffff;
+}
+
+.first-button:hover {
+    background-color: #ffffff;
+    color: #262626;
+    transform: scale(1.05);
+    border:1px #000000;
+}
+
+.first-button:hover img {
+    filter: invert(1);
+}
+
+/* Second Button (Grey Background) */
+.second-button {
+    background-color: #D6D6D6;
+    color: #fff;
+}
+
+.second-button:hover {
+    background-color: #262626;
+    color: #262626;
+    transform: scale(1.05);
+}
+
+.second-button:hover img {
+    filter: invert(1);
+}
+
+/* Third Button (White with Black Border) */
+.third-button {
+    background-color: #ffffff;
+    color: #262626;
+    border: 2px solid #262626;
+}
+
+.third-button:hover {
+    background-color: #262626;
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+.third-button:hover img {
+    filter: invert(1);
+}
+
+
+/* Footer */
+footer {
+    background-color: #262626;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+footer img {
+    display: block;
+    margin: 10px auto 0 auto;
+    width: 50px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 100; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+}
+
+#modal-card-image {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-card-info {
+    position: absolute;
+    left: 61px;
+    top: 100px;
+}
+
+
+
+.modal-card-info p {
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 20px;
+    color: white;
+}
+
+.modal-plan{
+    position: absolute;
+    left: 276px;
+    top: 100px;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+#upgrade-button-2 {
+    position: absolute;
+    top: 167px;
+    left: 306px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: #262626;
+    /* border: 2px solid #262626; */
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#upgrade-button-2:hover {
+    background-color: #262626;
+    color: #ffffff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .green-plan {
+        width: 90%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    main {
+        width: 90%;
+    }
+
+    .button-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .action-button {
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .action-button img {
+        margin: 0 10px 0 0;
+    }
+
+    .gocash-card {
+        width: 100%;
+        max-width: 300px;
+    }
+}

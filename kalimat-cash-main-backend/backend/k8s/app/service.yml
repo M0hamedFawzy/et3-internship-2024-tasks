@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: internship2024
+  name: kalimatcash-internship2024
+  labels:
+    service: kalimatcash-internship2024
+spec:
+  selector:
+    service: kalimatcash-internship2024
+  type: ClusterIP
+  ports:
+  - name: web
+    port: 8002
+
+  

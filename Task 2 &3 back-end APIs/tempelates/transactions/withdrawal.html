@@ -1,0 +1,97 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/transaction.css' %}" type="text/css">
+    <script src="https://kit.fontawesome.com/f5a624e72c.js" crossorigin="anonymous"></script>
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">-->
+    <title>GoCash | User Dashboard</title>
+</head>
+<body>
+    <header>
+        <h1>GoCash | Transactions</h1> <!-- Display the user's name -->
+        <nav>
+            <a href="/wallets">Wallet</a>
+            <a href="/transactions">Transfers</a>
+            <a href="">Payment</a>
+            <a href="">Subscription Plan</a>
+            <a href="">Green User</a>
+            <a href="">Support</a>
+            <a href="/">Log out</a> <!-- Add a logout option -->
+        </nav>
+    </header>
+
+
+
+     <!-- Home button and label -->
+    <div class="home-container">
+        <a href="/transactions" class="home-button">
+            <img src="{% static 'images/back.png' %}" alt="Home" class="home-icon">
+        </a>
+        <p><strong>Back</strong></p>
+    </div>
+
+
+
+
+    <!-- Rounded form with shadows -->
+    <div class="form-container">
+        <h2>withdraw Money</h2>
+        {% if messages %}
+                <div class="messages" style="margin-bottom: 15px;">
+                    {% for message in messages %}
+                        <div style="
+                            {% if message.tags == 'success' %}
+                                color: #4F8A10;
+                                background-color: #DFF2BF;
+                                border: 1px solid #4F8A10;
+                            {% else %}
+                                color: #D8000C;
+                                background-color: #FFBABA;
+                                border: 1px solid #D8000C;
+                            {% endif %}
+                            padding: 10px;
+                            border-radius: 5px;
+                            margin-bottom: 10px;">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            <!-- Dropdown menu with icons -->
+            <label for="payment_method">Choose your payment method</label>
+            <div class="dropdown-container">
+                <select id="payment_method" name="payment_method" required>
+                    <option value="fawzry">
+                        &#x1F3E6; Bank Account
+                    </option>
+                    <option value="bank account">
+                        &#x1F4B3; Credit Card
+                    </option>
+                    <option value="ATM">
+                        &#x1F4B0; ATM
+                    </option>
+                </select>
+            </div>
+            <label for="payment_method">Add withdrawal amount</label>
+            <input type="number" id="amount" name="amount" placeholder="Enter amount" min="0" step="0.01" required>
+            <button type="submit">Confirm</button>
+        </form>
+    </div>
+
+
+
+
+
+    <footer>
+        <p>Designed by Mohamed Fawzy</p>
+        <p>GoCash Application eT3 - Project</p>
+        <img src="{% static 'images/images.jpeg' %}" alt="eT3 Logo">
+    </footer>
+</body>
+</html>

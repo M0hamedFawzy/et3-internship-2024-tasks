@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/wallet.css' %}" type="text/css">
+    <title>GoCash | User Dashboard</title>
+</head>
+<body>
+    <header>
+        <h1>GoCash | Wallet</h1> <!-- Display the user's name -->
+        <nav>
+            <a href="/wallets">Wallet</a>
+            <a href="/transactions">Transfers</a>
+            <a href="">Payment</a>
+            <a href="">Subscription Plan</a>
+            <a href="">Green User</a>
+            <a href="">Support</a>
+            <a href="/">Log out</a> <!-- Add a logout option -->
+        </nav>
+    </header>
+
+     <!-- Home button and label -->
+    <div class="home-container">
+        <a href="/users" class="home-button">
+            <img src="{% static 'images/user_home2.png' %}" alt="Home" class="home-icon">
+        </a>
+        <p><strong>Home</strong></p>
+    </div>
+
+    {% block content %}
+        {% if wallet is None %}
+            {% include 'wallets/not_created.html' %}
+        {% else %}
+            {% include 'wallets/show_wallet.html' %}
+        {% endif %}
+    {% endblock %}
+
+
+    <footer>
+        <p>Designed by Mohamed Fawzy</p>
+        <p>GoCash Application eT3 - Project</p>
+        <img src="{% static 'images/images.jpeg' %}" alt="eT3 Logo">
+    </footer>
+</body>
+</html>

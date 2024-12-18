@@ -1,0 +1,297 @@
+/* Existing Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+header {
+    background-color: rgba(38, 38, 38, 1);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+.home-container {
+    padding-left: 30px;
+    padding-top: 20px;
+    position: left;
+    top: 20px;
+    left: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(38, 38, 38, 1);
+    color: #fff;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.home-button:hover {
+    background-color: #555;
+    transform: scale(1.1);
+}
+
+.home-icon {
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+}
+
+.home-container p {
+    padding-left: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #000;
+}
+
+footer {
+    background-color: rgba(38, 38, 38, 1);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+footer img {
+    display: block;
+    margin: 20px auto;
+    width: 50px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.balance-container {
+    padding-top: 40px;
+    padding-bottom: 80px;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+}
+
+.user-info {
+    font-size: 40px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+    clear: both;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 50px;
+    background-color: rgba(38, 38, 38, 1);
+    color: #fff;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(38, 38, 38, 1);
+    transform: scale(1.05);
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* 5% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 500px; /* Could be more or less, depending on screen size */
+    border-radius: 10px;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.modal-content p {
+    color: #555;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input[type="password"],
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-group .terms {
+    display: flex;
+    align-items: center;
+}
+
+.form-group .terms label {
+    margin-left: 10px;
+    color: #333;
+}
+
+.modal-content button {
+    background-color: rgba(38, 38, 38, 1);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.modal-content button:hover {
+    background-color: #555;
+}
+
+/* Message Styles */
+.message {
+    padding: 10px 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-weight: bold;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.success {
+    background-color: #d4edda; /* Light green background */
+    color: #155724; /* Dark green text */
+    border: 1px solid #c3e6cb;
+}
+
+.error {
+    background-color: #f8d7da; /* Light red background */
+    color: #721c24; /* Dark red text */
+    border: 1px solid #f5c6cb;
+}
+
+/* Optional: Fade-in animation for messages */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+
+
+
+
+
+
+
+/* Progress Bar Styles */
+
+.progress-container {
+    position: absolute;
+    top: 500px;
+    width: 50%;
+    height: 20px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    background-color: green; /* Main color */
+    border-radius: 5px;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .progress-text {
+    position: absolute;
+    left: 594px;
+    /* display: inline-block; */
+    margin-left: 5px;
+    color: black; /* Main color */
+    font-weight: bold;
+  }
+
+
+
+

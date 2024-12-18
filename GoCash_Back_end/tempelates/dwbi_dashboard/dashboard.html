@@ -1,0 +1,405 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <script src="https://kit.fontawesome.com/f5a624e72c.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.0.3/numeral.min.js" integrity="sha512-sMgx0iqtQVrEwuUPBeRZE42fOPWIRBRb3CLaoK5gilEnzKTkdJpjguVk5HpcmOgjyZlHSGqXXugNlaovRhYLsg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+<body>
+        <header>
+            <h1>GoCash | Admin Dashboard</h1>
+            <nav>
+                <a href="/admin">Admin Panel</a>
+            </nav>
+        </header>
+    <div class="dashboard-container">
+
+
+        <!-- Cards Section -->
+        <section class="main-cards">
+            <div class="card">
+                <div class="title">Active Users <i class="fa-solid fa-user" style="color: #B3E8EC"></i></div>
+                <div class="value">{{ cards.active_users }}</div>
+            </div>
+            <div class="card">
+                <div class="title">Green Users  <i class="fa-solid fa-leaf" style="color: #6EE989"></i></div>
+                <div class="value">{{ cards.green_users }}</div>
+            </div>
+            <div class="card">
+                <div class="title">Active Wallets <i class="fa-solid fa-wallet" style="color: #F1BD74"></i></div>
+                <div class="value">{{ cards.active_wallets }}</div>
+            </div>
+            <div class="card">
+                <div class="title">Total Transactions <i class="fa-solid fa-arrow-right-arrow-left" style="color: #DAF459"></i></div>
+                <div class="value">{{ cards.total_transactions }}</div>
+            </div>
+             <div class="card">
+                 <div class="title">Total Profit <i class="fa-solid fa-dollar" style="color: #00FF26"></i></div>
+                 <div class="value">{{ cards.total_transactions_profit }} EGP</div>
+            </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="chart-section">
+            <h2>Users Section</h2>
+            <div class="chart-grid">
+                <canvas id="active-vs-inactive-users"></canvas>
+                <canvas id="green-users"></canvas>
+                <canvas id="green-distribution"></canvas>
+                <canvas id="user-subscription-plans"></canvas>
+            </div>
+        </section>
+
+        <section class="chart-section">
+            <h2>Wallet Section</h2>
+            <div class="chart-grid">
+                <canvas id="wallet-avg-balance"></canvas>
+                <canvas id="active-vs-inactive-wallets"></canvas>
+                <canvas id="created-wallets"></canvas>
+            </div>
+        </section>
+
+        <section class="chart-section">
+            <h2>Transactions Section</h2>
+            <div class="chart-grid">
+                <canvas id="transactions-per-year"></canvas>
+                <canvas id="service-type-distribution"></canvas>
+                <canvas id="peak-transactions"></canvas>
+            </div>
+        </section>
+
+        <section class="chart-section">
+        <h2>Trends Section</h2>
+        <form id="generate-chart-form" method="POST">
+    {% csrf_token %}
+    <div class="chart-controls">
+        <select name="freq" id="timeframe-select">
+            <option value="D">Day</option>
+            <option value="M">Month</option>
+            <option value="Y">Year</option>
+        </select>
+        <input type="text" name="period" id="custom-date-range" placeholder="Enter Period" required="required">
+        <button type="button" id="generate-chart">Generate</button>
+    </div>
+</form>
+
+        <div class="chart-grid">
+            <canvas id="forecastChart-1" ></canvas>
+            <canvas id="forecastChart-2" ></canvas>
+            <canvas id="forecastChart-3" ></canvas>
+     </div>
+</section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Active vs Inactive Users Chart
+            new Chart(document.getElementById('active-vs-inactive-users'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Active users', 'Inactive users'],
+                    datasets: [{
+                        data: [
+                            {{ charts.users.active_vs_non_active.active }},
+                            {{ charts.users.active_vs_non_active.non_active }}
+                        ],
+                        backgroundColor: ['#66B3FF', '#3366CC']
+                    }]
+                }
+            });
+
+            // User Subscription Plans Chart
+            new Chart(document.getElementById('user-subscription-plans'), {
+                type: 'polarArea',
+                data: {
+                    labels: ['Standard', 'Plus', 'Premium'],
+                    datasets: [{
+                        data: [{% for plan in charts.users.subscription_plans %}{{ plan.count }}{% if not forloop.last %}, {% endif %}{% endfor %}],
+                        backgroundColor: ['#27A0EB', '#6E8CAA', '#2C3E50']
+                    }]
+                }
+            });
+
+            // Green Users Chart
+            new Chart(document.getElementById('green-users'), {
+                type: 'bar',
+                data: {
+                    labels: ['Green Users', 'Non-Green Users'],
+                    datasets: [{
+                        label: 'Green vs Non-Green',
+                        data: [
+                            {{ charts.users.green_vs_non_green.green_users }},
+                            {{ charts.users.green_vs_non_green.non_green_users }}
+                        ],
+                        backgroundColor: ['#66B3FF', '#3366CC']
+                    }]
+                }
+            });
+
+            // Green users distribution
+            new Chart(document.getElementById('green-distribution'), {
+        type: 'bar',
+        data: {
+            labels: ['Leaf', 'Tree', 'Forest'],  // Labels corresponding to green user statuses
+            datasets: [{
+                label: 'Green User Distribution',  // Title for the dataset
+                data: [ {{ charts.users.leaf }}, {{ charts.users.tree }}, {{ charts.users.forest }}],
+                backgroundColor: ['#1CC9E3', '#16A0B6', '#117888'],  // Color for each bar
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true  // Ensures the y-axis starts from 0
+                }
+            }
+        }
+    });
+
+
+            // Wallet Average Balance Chart
+            new Chart(document.getElementById('wallet-avg-balance'), {
+                type: 'line',
+                data: {
+                    labels: [{% for balance in charts.wallets.average_balances %}'{{ balance.0 }}'{% if not forloop.last %}, {% endif %}{% endfor %}],
+                    datasets: [{
+                        label: 'Avg Balance',
+                        data: [{% for balance in charts.wallets.average_balances %}{{ balance.1 }}{% if not forloop.last %}, {% endif %}{% endfor %}],
+                        borderColor: '#03a9f4',
+                        tension: 0.4,
+                        fill: false
+                    }]
+                }
+            });
+
+            // Active vs Inactive Wallets Chart
+            new Chart(document.getElementById('active-vs-inactive-wallets'), {
+                type: 'pie',
+                data: {
+                    labels: ['Active Wallets', 'Inactive Wallets'],
+                    datasets: [{
+                        data: [
+                            {{ charts.wallets.active_vs_non_active.active_wallets }},
+                            {{ charts.wallets.active_vs_non_active.non_active_wallets }}
+                        ],
+                        backgroundColor: ['#66B3FF', '#3366CC']
+                    }]
+                }
+            });
+
+// Bar chart for created wallets
+new Chart(document.getElementById('created-wallets'), {
+    type: 'bar',
+    data: {
+        labels: [{% for wallet in charts.wallets.created_wallets %}'{{ wallet.0 }}'{% if not forloop.last %}, {% endif %}{% endfor %}],
+        datasets: [{
+            label: 'Wallets Created',
+            data: [{% for wallet in charts.wallets.created_wallets %}{{ wallet.1 }}{% if not forloop.last %}, {% endif %}{% endfor %}],
+            backgroundColor: 'rgba(54, 162, 235, 0.5)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: true,
+                position: 'top'
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        return `${context.dataset.label}: ${context.raw}`;
+                    }
+                }
+            }
+        },
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: 'Year'
+                }
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: 'Number of Wallets'
+                },
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+
+            // Transactions Per Year Chart
+            new Chart(document.getElementById('transactions-per-year'), {
+                type: 'bar',
+                data: {
+                    labels: [{% for transaction in charts.transactions.per_year %}'{{ transaction.0 }}'{% if not forloop.last %}, {% endif %}{% endfor %}],
+                    datasets: [{
+                        label: 'Transactions',
+                        data: [{% for transaction in charts.transactions.per_year %}{{ transaction.1 }}{% if not forloop.last %}, {% endif %}{% endfor %}],
+                        backgroundColor: '#6E8CAA'
+                    }]
+                }
+            });
+
+            // Service Type Distribution Chart
+            new Chart(document.getElementById('service-type-distribution'), {
+                type: 'radar',
+                data: {
+                    labels: [{% for service in charts.transactions.service_types %}'{{ service.0 }}'{% if not forloop.last %}, {% endif %}{% endfor %}],
+                    datasets: [{
+                        label: 'Service Types',
+                        data: [{% for service in charts.transactions.service_types %}{{ service.1 }}{% if not forloop.last %}, {% endif %}{% endfor %}],
+                        backgroundColor: 'rgba(103, 58, 183, 0.2)',
+                        borderColor: '#117888'
+                    }]
+                }
+            });
+
+            // Peak Transactions Chart
+            new Chart(document.getElementById('peak-transactions'), {
+                type: 'line',
+                data: {
+                    labels: [{% for peak in charts.transactions.peak_transactions %}'{{ peak.0 }}'{% if not forloop.last %}, {% endif %}{% endfor %}],
+                    datasets: [{
+                        label: 'Peak Transactions',
+                        data: [{% for peak in charts.transactions.peak_transactions %}{{ peak.1 }}{% if not forloop.last %}, {% endif %}{% endfor %}],
+                        borderColor: '#16A0B6',
+                        tension: 0.4,
+                        fill: false
+                    }]
+                }
+            });
+        });
+
+
+        // Trends
+<!--         document.getElementById('generate-chart').addEventListener('click', function() {-->
+<!--            new Chart(document.getElementById('forecastChart-1'), {-->
+<!--                type: 'bar',-->
+<!--                data: {-->
+<!--                    labels: [{% for date in trends.users.dates %}'{{ date }}'{% if not forloop.last %}, {% endif %}{% endfor %}],-->
+<!--                    datasets: [{-->
+<!--                        label: 'Users Forecast',-->
+<!--                        data: [{% for prediction in trends.users.predictions %}{{ prediction }}{% if not forloop.last %}, {% endif %}{% endfor %}],-->
+<!--                        backgroundColor: '#16A0B6'-->
+<!--                    }]-->
+<!--                }-->
+<!--            });-->
+<!--        });-->
+
+<!--        document.getElementById('generate-chart').addEventListener('click', function() {-->
+<!--            new Chart(document.getElementById('forecastChart-2'), {-->
+<!--                type: 'bar',-->
+<!--                data: {-->
+<!--                    labels: [{% for date in trends.transactions.dates %}'{{ date }}'{% if not forloop.last %}, {% endif %}{% endfor %}],-->
+<!--                    datasets: [{-->
+<!--                        label: 'Transactions Forecast',-->
+<!--                        data: [{% for prediction in trends.transactions.predictions %}{{ prediction }}{% if not forloop.last %}, {% endif %}{% endfor %}],-->
+<!--                        backgroundColor: '#1CC9E3'-->
+<!--                    }]-->
+<!--                }-->
+<!--            });-->
+<!--        });-->
+
+<!--        document.getElementById('generate-chart').addEventListener('click', function() {-->
+<!--            new Chart(document.getElementById('forecastChart-3'), {-->
+<!--                type: 'line',-->
+<!--                data: {-->
+<!--                    labels: [{% for date in trends.profits.dates %}'{{ date }}'{% if not forloop.last %}, {% endif %}{% endfor %}],-->
+<!--                    datasets: [{-->
+<!--                        label: 'Profits Forecast',-->
+<!--                        data: [{% for prediction in trends.profits.predictions %}{{ prediction }}{% if not forloop.last %}, {% endif %}{% endfor %}],-->
+<!--                        borderColor: '#49D3E9',-->
+<!--                        tension: 0.4,-->
+<!--                        fill: false-->
+<!--                    }]-->
+<!--                }-->
+<!--            });-->
+<!--        });-->
+
+document.getElementById('generate-chart').addEventListener('click', function() {
+    const form = document.getElementById('generate-chart-form');
+    const formData = new FormData(form);
+
+    fetch("{% url 'generate_chart' %}", {
+        method: "POST",
+        headers: {
+            "X-CSRFToken": formData.get('csrfmiddlewaretoken'),
+        },
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Update charts with the new data
+        updateChart('forecastChart-1', 'Users Forecast', data.users.dates, data.users.predictions, '#16A0B6');
+        updateChart('forecastChart-2', 'Transactions Forecast', data.transactions.dates, data.transactions.predictions, '#1CC9E3');
+        updateLineChart('forecastChart-3', 'Profits Forecast', data.profits.dates, data.profits.predictions, '#49D3E9');
+    })
+    .catch(error => console.error('Error:', error));
+});
+
+let chartInstances = {};
+
+function updateChart(chartId, label, labels, data, color) {
+    const ctx = document.getElementById(chartId).getContext('2d');
+
+    if (chartInstances[chartId]) {
+        chartInstances[chartId].destroy();
+    }
+
+    chartInstances[chartId] = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: label,
+                data: data,
+                backgroundColor: color
+            }]
+        }
+    });
+}
+
+    function updateLineChart(chartId, label, labels, data, color) {
+    const ctx = document.getElementById(chartId).getContext('2d');
+
+    if (chartInstances[chartId]) {
+        chartInstances[chartId].destroy();
+    }
+
+    chartInstances[chartId] = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: label,
+                data: data,
+                borderColor: color,
+                fill: true,
+                tension: 0.1
+            }]
+        }
+    });
+}
+
+
+    </script>
+</body>
+</html>
+
+

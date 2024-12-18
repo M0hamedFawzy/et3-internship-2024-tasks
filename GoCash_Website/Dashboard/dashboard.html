@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoCash | User Dashboard</title>
+    <link rel="stylesheet" href="/Dashboard/css/userDashboard.css">
+</head>
+<body>
+    <header>
+        <h1>GoCash | Welcome <span id="username_0">Loading...</span></h1> <!-- Placeholder for the user's name -->
+        <nav>
+            <a href="/Wallet/wallet.html">Wallet</a>
+            <a href="/Transactions/transactions.html">Transfers</a>
+            <a href="/Payment/payment.html">Payment</a>
+            <a href="/subscription/subscription.html">Subscription Plan</a>
+            <a href="/green.html">Green User</a>
+            <a href="/Support/support.html">Support</a>
+            <a href="#" id="logout-link">Log out</a> <!-- Logout option -->
+        </nav>
+    </header>
+
+    <div class="dashboard-container">
+       
+
+        <!-- Main Content -->
+        <main>
+            <!-- GoCash Card -->
+            <div class="gocash-card" id="gocash-card">
+                <img src="/images/gocash card standard.png" alt="GoCash Card" id="card-image">
+                <div class="card-info">
+                    <p><strong><span id="username">Loading...</span></strong></p>
+                    <p><strong><span id="phone-number">Loading...</span></strong></p>
+                    <p><strong><span id="balance">Loading...</span></strong></p>
+                    <p><strong><span id="status">Loading...</span></strong></p>
+                </div>
+
+                <div class="subscription-info">
+                    <p><strong><span id="subscriptionPlan">Loading...</span></strong></p>
+                </div>
+
+                <div class="upgrade-plan">
+                    <button class="upgrade-plan-button" id="upgrade-plan">
+                        <strong>Upgrade</strong>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="button-container">
+                <div class="button-wrapper">
+                    <button class="action-button first-button" id="charge-wallet">
+                        <img src="/images/charge.png" alt="Charge Wallet Icon">
+                    </button>
+                    <span class="button-text">Charge Wallet</span>
+                </div>
+                <div class="button-wrapper">
+                    <button class="action-button second-button" id="send-money">
+                        <img src="/images/send.png" alt="Send Money Icon">
+                    </button>
+                    <span class="button-text">Send Money</span>
+                </div>
+                <div class="button-wrapper">
+                    <button class="action-button third-button" id="transfers">
+                        <img src="/images/trans.png" alt="Transfers Icon">
+                    </button>
+                    <span class="button-text">Transfers</span>
+                </div>
+            </div>
+
+        </main>
+
+         <!-- Green Plan Section -->
+         <aside class="green-plan">
+            <h2>Green Plan</h2>
+            <img src="/images/green.png" alt="Green Plan Image">
+            <button id="become-green-button"><strong>Become Green</strong></button>
+        </aside>
+    </div>
+
+    <!-- Popup Modal for Enlarged Card -->
+    <div id="card-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <img src="/images/gocash card standard.png" alt="GoCash Card Enlarged" id="modal-card-image">
+            <div class="modal-card-info">
+                <p><strong><span id="modal-username">Loading...</span></strong></p>
+                <p><strong><span id="modal-phone-number">Loading...</span></strong></p>
+                <p><strong><span id="modal-balance">Loading...</span></strong></p>
+                <p><strong><span id="modal-status">Loading...</span></strong></p>
+                <button id="upgrade-button-2">Upgrade</button>
+            </div>
+            <div class="modal-plan">
+                <p><strong><span id="modal-plan" class="model-plan"></span></strong></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Designed by Mohamed Fawzy</p>
+        <p>GoCash Application eT3 - Project</p>
+        <img src="/images/et3-logo.jpeg" alt="eT3 Logo">
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/Dashboard/js/userDashboard.js"></script>
+</body>
+</html>

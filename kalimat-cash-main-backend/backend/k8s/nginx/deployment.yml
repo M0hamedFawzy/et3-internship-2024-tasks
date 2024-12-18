@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: internship2024
+  creationTimestamp: null
+  labels:
+    name: kalimatcash-nginx-internship2024
+  name: kalimatcash-nginx-internship2024
+spec:
+  progressDeadlineSeconds: 2147483647
+  replicas: 1
+  selector:
+    matchLabels:
+      service: kalimatcash-nginx-internship2024
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        service: kalimatcash-nginx-internship2024
+    spec:
+      containers:
+      - name: kalimatcash-nginx-internship2024
+        image: nginx
+        volumeMounts:
+        - mountPath: /usr/share/nginx/html/media
+          name: kalimatcash-nginx-internship2024-volume-mount
+        - mountPath: /usr/share/nginx/html/static
+          name: kalimatcash-static-internship2024-volume-mount
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: kalimatcash-nginx-internship2024-volume-mount
+        persistentVolumeClaim:
+          claimName: kalimatcash-nginx-internship2024-pvc
+      - name: kalimatcash-static-internship2024-volume-mount
+        persistentVolumeClaim:
+          claimName: kalimatcash-static-internship2024-pvc
+

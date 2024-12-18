@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  namespace: internship2024
+  name: rabbit-internship2024-kalimatcash-pv
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 2Gi
+  storageClassName: standard
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/data/rabbit-internship2024-kalimatcash-pv"

@@ -1,0 +1,50 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard-container {
+  width: 90%;
+  margin: auto;
+  padding: 20px;
+}
+
+header h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.main-cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 20px;
+  width: 23%;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.chart-section {
+  margin-bottom: 30px;
+}
+
+.chart-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+canvas {
+  width: 45%;
+  height: 300px;
+  margin: 10px 0;
+}
