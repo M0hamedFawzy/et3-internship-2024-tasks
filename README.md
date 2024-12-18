@@ -192,4 +192,4 @@ Navigate to `http://127.0.0.1:8000/admin/` and log in with an admin account.
 ---
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+GoCash et3-Tomorrow Information Technology Internship-2024
